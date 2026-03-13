@@ -1,88 +1,78 @@
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matášek | Profil</title>
+    <title>Macchina Sportiva | Design Italiano</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6366f1;
-            --bg: #0f172a;
-            --card: #1e293b;
-            --text: #f8fafc;
+            /* Paleta barev jako z Maranella */
+            --ferrari-red: #dc2626; /* Rosso Corsa */
+            --dark-bg: #0a0a0a;    /* Temně černá */
+            --text-light: #f3f4f6; /* Skoro bílá */
+            --accent-gold: #fbbf24; /* Barva loga na kapotě */
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+
+        body, html {
             margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden; /* Skryje vodorovný posuvník */
         }
-        .container {
-            background-color: var(--card);
-            padding: 2rem;
-            border-radius: 1.5rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-            border: 1px solid rgba(255,255,255,0.1);
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 600;
+            letter-spacing: 1px;
         }
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, var(--primary), #a855f7);
-            margin: 0 auto 1.5rem;
+
+        /* --- Navigace --- */
+        nav {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            font-size: 3rem;
+            padding: 1.5rem 5%;
+            position: absolute;
+            width: 90%;
+            z-index: 10;
+        }
+        .brand {
+            font-size: 1.5rem;
             font-weight: bold;
+            color: var(--ferrari-red);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
-        h1 { margin: 0; font-size: 1.8rem; }
-        p { color: #94a3b8; margin: 0.5rem 0 1.5rem; }
-        .links { display: flex; flex-direction: column; gap: 0.8rem; }
-        .link {
-            background: rgba(255,255,255,0.05);
-            padding: 0.8rem;
-            border-radius: 0.8rem;
+        .nav-links a {
+            color: var(--text-light);
             text-decoration: none;
-            color: var(--text);
-            transition: all 0.3s ease;
-            border: 1px solid transparent;
+            margin-left: 2rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
         }
-        .link:hover {
-            background: rgba(99, 102, 241, 0.1);
-            border-color: var(--primary);
-            transform: translateY(-2px);
+        .nav-links a:hover {
+            color: var(--ferrari-red);
         }
-        .status {
-            display: inline-block;
-            background: #10b981;
-            color: white;
-            padding: 0.2rem 0.8rem;
-            border-radius: 1rem;
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
+
+        /* --- Hlavní sekce (Hero) --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            /* Dramatické pozadí s autem */
+            background: linear-gradient(rgba(0,0,0,0.5), var(--dark-bg)), url('https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+            border-bottom: 3px solid var(--ferrari-red);
         }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="profile-img">M</div>
-        <div class="status">Online a připraven</div>
-        <h1>Matášek</h1>
-        <p>Student SPŠE | Linux & Networking Enthusiast</p>
-        
-        <div class="links">
-            <a href="https://github.com/MATASEK0" class="link">📂 Můj GitHub</a>
-            <a href="#" class="link">📝 Maturitní projekt</a>
-            <a href="#" class="link">☕ Napiš mi</a>
-        </div>
-    </div>
-</body>
-</html>
+        .hero-content {
+            max-width: 600px;
+        }
+        .tagline {
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            font-size: 0.9rem;
