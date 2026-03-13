@@ -3,76 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Macchina Sportiva | Design Italiano</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+    <title>Scuderia Matášek</title>
     <style>
-        :root {
-            /* Paleta barev jako z Maranella */
-            --ferrari-red: #dc2626; /* Rosso Corsa */
-            --dark-bg: #0a0a0a;    /* Temně černá */
-            --text-light: #f3f4f6; /* Skoro bílá */
-            --accent-gold: #fbbf24; /* Barva loga na kapotě */
-        }
-
         body, html {
             margin: 0;
             padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            overflow-x: hidden; /* Skryje vodorovný posuvník */
+            background-color: #0a0a0a; /* Temná černá jako základ */
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            height: 100%;
         }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        /* --- Navigace --- */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 5%;
-            position: absolute;
-            width: 90%;
-            z-index: 10;
-        }
-        .brand {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--ferrari-red);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin-left: 2rem;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            transition: color 0.3s;
-        }
-        .nav-links a:hover {
-            color: var(--ferrari-red);
-        }
-
-        /* --- Hlavní sekce (Hero) --- */
+        /* Hero sekce s pojistkou */
         .hero {
             height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.6), #0a0a0a), 
+                        url('https://images.unsplash.com/photo-1592198084033-aade902d1aae?q=80&w=1920') no-repeat center center/cover;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            padding: 0 10%;
-            /* Dramatické pozadí s autem */
-            background: linear-gradient(rgba(0,0,0,0.5), var(--dark-bg)), url('https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-            border-bottom: 3px solid var(--ferrari-red);
+            text-align: center;
+            border-bottom: 5px solid #dc2626; /* Ferrari červená linka */
         }
-        .hero-content {
-            max-width: 600px;
-        }
-        .tagline {
-            color: var(--accent-gold);
+
+        .hero h1 {
+            font-size: 4rem;
+            margin: 0;
+            color: #dc2626;
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 20px;
+            color: #cccccc;
+        }
+
+        .btn {
+            background-color: #dc2626;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            border-color: #dc2626;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <span style="color: #fbbf24; font-weight: bold; letter-spacing: 3px;">MARANELLO EDITION</span>
+        <h1>PASSIONE<span> ITALIANA</span></h1>
+        <p>Vítejte ve světě, kde rychlost potkává eleganci. Vaše cesta za dokonalostí začíná zde.</p>
+        <a href="#" class="btn">Vstoupit do garáže</a>
+    </section>
+
+</body>
+</html>
