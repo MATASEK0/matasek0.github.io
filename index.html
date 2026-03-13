@@ -3,45 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matěj Hostinský | Minimalist Portfolio</title>
+    <title>Matěj Hostinský | Architecture of Code</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #ffffff;
-            --text-dark: #000000;
-            --text-gray: #6e6e73;
-            --line: #e5e5e5;
+            --text-main: #000000;
+            --text-sub: #6e6e73;
+            --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
 
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg);
-            color: var(--text-dark);
+            color: var(--text-main);
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
-        /* --- Animace --- */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* --- Hero Sekce (Bílá Vila) --- */
+        /* --- Hero Sekce --- */
         .hero {
             height: 100vh;
-            width: 100%;
             display: flex;
-            align-items: flex-end; /* Text dole pro luxusní vzhled */
-            padding-bottom: 10vh;
+            align-items: flex-end;
+            padding: 0 8% 12vh;
             position: relative;
-            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 90%), 
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 95%), 
                         url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -49,108 +38,102 @@
         }
 
         .hero-content {
-            width: 90%;
-            margin: 0 auto;
-            animation: slideUp 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideIn 1.2s forwards;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 12vw, 8rem);
+            font-size: clamp(4rem, 15vw, 10rem);
             font-weight: 900;
-            letter-spacing: -5px;
-            line-height: 0.9;
+            letter-spacing: -6px;
+            line-height: 0.85;
             text-transform: uppercase;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            font-weight: 200;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            margin-top: 10px;
-        }
-
-        /* --- Sekce s detaily --- */
-        .content {
-            padding: 120px 5%;
-            background-color: white;
+        /* --- Main Layout --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 100px 5%;
         }
 
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 60px;
-            max-width: 1200px;
-            margin: 0 auto;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px; /* Minimalistická mezera */
         }
 
+        /* --- Spodní odstavce s Inverzním efektem --- */
         .info-block {
-            border-top: 1px solid var(--line);
-            padding-top: 20px;
-            animation: fadeIn 2s ease-out forwards;
+            padding: 60px 40px;
+            border-radius: 24px; /* Jemné zaoblení pro moderní pocit */
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 350px;
+            background-color: transparent;
+            border: 1px solid #f2f2f2;
+            cursor: default;
+        }
+
+        /* KLÍČOVÝ EFEKT: Reverzní zbarvení při hoveru */
+        .info-block:hover {
+            background-color: #000000;
+            color: #ffffff !important;
+            transform: translateY(-10px);
+            border-color: #000;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
 
         .info-block h3 {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
+            letter-spacing: 3px;
+            margin-bottom: 30px;
             font-weight: 700;
+            color: inherit;
         }
 
         .info-block p {
-            font-size: 1.1rem;
-            color: var(--text-gray);
-            font-weight: 400;
-            line-height: 1.7;
+            font-size: 1.25rem;
+            font-weight: 300;
+            line-height: 1.6;
+            color: var(--text-sub);
+            transition: var(--transition);
         }
 
-        /* --- Černý prvek pro kontrast --- */
-        .dark-banner {
-            background-color: #000;
-            color: #fff;
-            padding: 100px 5%;
-            text-align: center;
-            margin-top: 100px;
+        .info-block:hover p {
+            color: #ffffff;
+            opacity: 0.9;
         }
 
-        .dark-banner h2 {
-            font-size: 2.5rem;
-            font-weight: 200;
-            letter-spacing: -1px;
+        /* --- Animace --- */
+        @keyframes slideIn {
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .btn-white {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 15px 40px;
-            border: 1px solid #fff;
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            transition: 0.4s;
-        }
-
-        .btn-white:hover {
-            background-color: #fff;
-            color: #000;
-        }
-
+        /* --- Footer --- */
         footer {
-            padding: 80px 0;
+            padding: 100px 0;
             text-align: center;
-            font-size: 0.7rem;
-            letter-spacing: 1px;
-            color: #ccc;
+            border-top: 1px solid #f2f2f2;
+            margin-top: 50px;
+        }
+
+        .footer-logo {
+            font-weight: 900;
+            font-size: 1.2rem;
+            letter-spacing: -1px;
             text-transform: uppercase;
         }
 
-        /* Responzivita */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 4rem; letter-spacing: -2px; }
-            .grid { gap: 40px; }
+        /* Responzivita pro mobily */
+        @media (max-width: 1024px) {
+            .grid { grid-template-columns: 1fr; gap: 30px; }
+            .info-block { min-height: auto; padding: 40px; }
+            .hero h1 { letter-spacing: -3px; }
         }
     </style>
 </head>
@@ -158,35 +141,34 @@
 
     <section class="hero">
         <div class="hero-content">
-            <p>Architektura Kódu</p>
-            <h1>Matěj<br>Hostinský</h1>
+            <h1 id="main-title">Matěj<br>Hostinský</h1>
         </div>
     </section>
 
-    <main class="content">
+    <main class="container">
         <div class="grid">
             <div class="info-block">
-                <h3>Vize</h3>
-                <p>Projekty postavené na základech čistoty a funkčnosti. Každý prvek má své místo, každý řádek svůj účel.</p>
+                <h3>01 / Concept</h3>
+                <p>Minimalismus není nedostatek něčeho. Je to dokonalé množství ničeho, co dává prostor myšlenkám.</p>
             </div>
+
             <div class="info-block">
-                <h3>Struktura</h3>
-                <p>Stejně jako moderní vila, i software potřebuje pevnou konstrukci, která vydrží zkoušku času a nároky budoucnosti.</p>
+                <h3>02 / Logic</h3>
+                <p>Kódování je jako architektura. Základy musí být neviditelné, ale neotřesitelné.</p>
             </div>
+
             <div class="info-block">
-                <h3>Detaily</h3>
-                <p>Maturitní projekt 2026. Definice moderního inženýrství převedená do digitální podoby.</p>
+                <h3>03 / Future</h3>
+                <p>Maturitní projekt 2026. Hranice mezi digitálním světem a čistou estetikou se smazává.</p>
             </div>
         </div>
     </main>
 
-    <section class="dark-banner">
-        <h2>Méně je více.</h2>
-        <a href="#" class="btn-white">Kontaktovat</a>
-    </section>
-
     <footer>
-        &copy; 2026 Matěj Hostinský &mdash; Estetika a Technologie.
+        <div class="footer-logo">MH 2026</div>
+        <p style="font-size: 10px; color: #ccc; margin-top: 20px; letter-spacing: 2px; text-transform: uppercase;">
+            Designed for Excellence
+        </p>
     </footer>
 
 </body>
