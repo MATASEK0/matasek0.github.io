@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matěj Hostinský | Digital Architect</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <title>Matěj Hostinský | Minimalist Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --accent: #0071e3; /* Apple Blue */
-            --bg: #000000;
-            --text: #f5f5f7;
-            --card-bg: rgba(28, 28, 30, 0.7);
+            --bg: #ffffff;
+            --text-dark: #000000;
+            --text-gray: #6e6e73;
+            --line: #e5e5e5;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -18,127 +18,139 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            overflow-x: hidden;
+            color: var(--text-dark);
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* --- Animace při načtení --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
+        /* --- Animace --- */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- Hero Sekce (New York) --- */
+        /* --- Hero Sekce (Bílá Vila) --- */
         .hero {
             height: 100vh;
             width: 100%;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            align-items: flex-end; /* Text dole pro luxusní vzhled */
+            padding-bottom: 10vh;
             position: relative;
-            /* Obrázek New Yorku z Unsplash */
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
-                        url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=1920&auto=format&fit=crop');
+            background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 90%), 
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1920&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed; /* Parallax efekt */
+            background-attachment: fixed;
         }
 
         .hero-content {
-            animation: fadeInUp 1.2s ease-out;
-            padding: 20px;
+            width: 90%;
+            margin: 0 auto;
+            animation: slideUp 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 10vw, 6rem);
+            font-size: clamp(3rem, 12vw, 8rem);
             font-weight: 900;
-            letter-spacing: -3px;
-            margin-bottom: 10px;
-            background: linear-gradient(180deg, #fff 0%, #888 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            letter-spacing: -5px;
+            line-height: 0.9;
+            text-transform: uppercase;
         }
 
         .hero p {
             font-size: 1.2rem;
-            font-weight: 300;
-            letter-spacing: 2px;
+            font-weight: 200;
+            letter-spacing: 5px;
             text-transform: uppercase;
-            color: var(--accent);
+            margin-top: 10px;
         }
 
-        /* --- Obsahová část --- */
-        .container {
-            max-width: 1100px;
-            margin: -100px auto 100px;
-            position: relative;
-            z-index: 2;
-            padding: 0 20px;
+        /* --- Sekce s detaily --- */
+        .content {
+            padding: 120px 5%;
+            background-color: white;
         }
 
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* --- Skleněné karty (Glassmorphism) --- */
-        .card {
-            background: var(--card-bg);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 40px;
-            border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
-            animation: fadeInUp 1s ease-out backwards;
+        .info-block {
+            border-top: 1px solid var(--line);
+            padding-top: 20px;
+            animation: fadeIn 2s ease-out forwards;
         }
 
-        .card:hover {
-            transform: translateY(-10px);
-            background: rgba(44, 44, 46, 0.8);
-            border-color: var(--accent);
-        }
-
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.4s; }
-
-        .card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+        .info-block h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
             font-weight: 700;
         }
 
-        .card p {
-            color: #a1a1a6;
-            font-size: 1rem;
+        .info-block p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            font-weight: 400;
+            line-height: 1.7;
         }
 
-        /* --- Tlačítko --- */
-        .cta-btn {
+        /* --- Černý prvek pro kontrast --- */
+        .dark-banner {
+            background-color: #000;
+            color: #fff;
+            padding: 100px 5%;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .dark-banner h2 {
+            font-size: 2.5rem;
+            font-weight: 200;
+            letter-spacing: -1px;
+        }
+
+        .btn-white {
             display: inline-block;
             margin-top: 30px;
-            padding: 12px 30px;
-            background-color: var(--accent);
-            color: white;
+            padding: 15px 40px;
+            border: 1px solid #fff;
+            color: #fff;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: 0.3s;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: 0.4s;
         }
 
-        .cta-btn:hover {
-            background-color: #0077ed;
-            box-shadow: 0 0 20px rgba(0, 113, 227, 0.4);
+        .btn-white:hover {
+            background-color: #fff;
+            color: #000;
         }
 
         footer {
+            padding: 80px 0;
             text-align: center;
-            padding: 50px;
-            color: #424245;
-            font-size: 0.9rem;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: #ccc;
+            text-transform: uppercase;
+        }
+
+        /* Responzivita */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 4rem; letter-spacing: -2px; }
+            .grid { gap: 40px; }
         }
     </style>
 </head>
@@ -146,33 +158,36 @@
 
     <section class="hero">
         <div class="hero-content">
-            <p>Visionary Developer</p>
-            <h1>Matěj Hostinský</h1>
-            <a href="#about" class="cta-btn">Prozkoumat tvorbu</a>
+            <p>Architektura Kódu</p>
+            <h1>Matěj<br>Hostinský</h1>
         </div>
     </section>
 
-    <div class="container" id="about">
+    <main class="content">
         <div class="grid">
-            <div class="card">
-                <h3>Inovace.</h3>
-                <p>Matěj Hostinský propojuje svět komplexního kódování s čistou estetikou městské architektury.</p>
+            <div class="info-block">
+                <h3>Vize</h3>
+                <p>Projekty postavené na základech čistoty a funkčnosti. Každý prvek má své místo, každý řádek svůj účel.</p>
             </div>
-            <div class="card">
-                <h3>Rychlost.</h3>
-                <p>Optimalizace není volba, je to standard. Výkon aplikací laděný k naprosté dokonalosti.</p>
+            <div class="info-block">
+                <h3>Struktura</h3>
+                <p>Stejně jako moderní vila, i software potřebuje pevnou konstrukci, která vydrží zkoušku času a nároky budoucnosti.</p>
             </div>
-            <div class="card">
-                <h3>Budoucnost.</h3>
-                <p>Maturitní projekt 2026 jako milník na cestě k profesionálnímu digitálnímu inženýrství.</p>
+            <div class="info-block">
+                <h3>Detaily</h3>
+                <p>Maturitní projekt 2026. Definice moderního inženýrství převedená do digitální podoby.</p>
             </div>
         </div>
-    </div>
+    </main>
+
+    <section class="dark-banner">
+        <h2>Méně je více.</h2>
+        <a href="#" class="btn-white">Kontaktovat</a>
+    </section>
 
     <footer>
-        &copy; 2026 Matěj Hostinský. Built for the future.
+        &copy; 2026 Matěj Hostinský &mdash; Estetika a Technologie.
     </footer>
 
 </body>
-</html>	
-
+</html>
