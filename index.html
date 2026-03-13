@@ -1,74 +1,177 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scuderia Matášek</title>
+    <title>Matěj Hostinský | Personal Showroom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            background-color: #0a0a0a; /* Temná černá jako základ */
-            color: #ffffff;
-            font-family: 'Arial', sans-serif;
-            height: 100%;
+        :root {
+            --apple-bg: #f5f5f7;
+            --apple-dark: #1d1d1f;
+            --ferrari-red: #ff2800; /* Originální Rosso Corsa */
+            --glass: rgba(255, 255, 255, 0.8);
         }
 
-        /* Hero sekce s pojistkou */
+        body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--apple-bg);
+            color: var(--apple-dark);
+            line-height: 1.5;
+        }
+
+        /* --- Apple-style Navigace --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 48px;
+            background: rgba(251, 251, 253, 0.8);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            font-size: 12px;
+            font-weight: 400;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--apple-dark);
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover { opacity: 1; color: var(--ferrari-red); }
+
+        /* --- Hero Section (Ferrari vášeň) --- */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.6), #0a0a0a), 
-                        url('https://images.unsplash.com/photo-1592198084033-aade902d1aae?q=80&w=1920') no-repeat center center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            border-bottom: 5px solid #dc2626; /* Ferrari červená linka */
+            background-color: #000;
+            color: white;
+            background-image: linear-gradient(rgba(0,0,0,0.4), #000), url('https://images.unsplash.com/photo-1592198084033-aade902d1aae?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--ferrari-red);
+            margin-bottom: 0;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            margin: 0;
-            color: #dc2626;
-            text-transform: uppercase;
-            font-style: italic;
+            font-size: 5rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-top: 0;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 20px;
-            color: #cccccc;
+        /* --- Obsahové karty (Apple Store Style) --- */
+        .section {
+            padding: 100px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .btn {
-            background-color: #dc2626;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+        }
+
+        .card h3 { font-size: 2rem; margin: 0; font-weight: 600; }
+        .card p { font-size: 1.1rem; color: #86868b; }
+
+        .card.red {
+            background-color: var(--ferrari-red);
             color: white;
-            padding: 15px 40px;
-            text-decoration: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.3s;
-            border: 2px solid transparent;
         }
 
-        .btn:hover {
-            background-color: transparent;
-            border-color: #dc2626;
-            transform: scale(1.1);
+        .card.red p { color: rgba(255,255,255,0.8); }
+
+        /* --- Footer --- */
+        footer {
+            padding: 50px;
+            text-align: center;
+            background: #f5f5f7;
+            color: #86868b;
+            font-size: 12px;
+        }
+
+        /* Responzivita */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
+    <nav>
+        <a href="#">Domů</a>
+        <a href="#">O mně</a>
+        <a href="#">Projekty</a>
+        <a href="#">Kontakt</a>
+    </nav>
+
     <section class="hero">
-        <span style="color: #fbbf24; font-weight: bold; letter-spacing: 3px;">MARANELLO EDITION</span>
-        <h1>PASSIONE<span> ITALIANA</span></h1>
-        <p>Vítejte ve světě, kde rychlost potkává eleganci. Vaše cesta za dokonalostí začíná zde.</p>
-        <a href="#" class="btn">Vstoupit do garáže</a>
+        <h2>Pura Passione.</h2>
+        <h1>Matěj Hostinský</h1>
+        <p style="font-size: 1.2rem; opacity: 0.8; font-weight: 300;">Technologie. Design. Výkon.</p>
     </section>
+
+    <section class="section">
+        <div class="grid">
+            <div class="card">
+                <h3>Vize.</h3>
+                <p>Matěj Hostinský definuje novou úroveň digitálního inženýrství s precizností, kterou by záviděli i v Cupertinu.</p>
+            </div>
+
+            <div class="card red">
+                <h3>Výkon bez limitů.</h3>
+                <p>Každý řádek kódu je jako motor V12. Čistá síla, která vás posune vpřed dříve, než stačíte mrknout.</p>
+            </div>
+
+            <div class="card" style="grid-column: 1 / -1; min-height: 300px; background-image: linear-gradient(90deg, #fff 50%, #f5f5f7 100%);">
+                <h3>Maturita 2026.</h3>
+                <p>Projekt, na kterém záleží. Spojení hardwaru a softwaru v jeden dokonalý celek.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        Copyright © 2026 Matěj Hostinský. Všechna práva vyhrazena Maranellu i Silicon Valley.
+    </footer>
 
 </body>
 </html>
